@@ -5,8 +5,13 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBys;
+
 import java.util.List;
+
+import static ch.lambdaj.Lambda.convert;
 import static ch.lambdaj.Lambda.extract;
 import static ch.lambdaj.Lambda.on;
 
@@ -30,4 +35,12 @@ public class SearchPage extends PageObject {
         List<WebElementFacade> titles = findAll("//h3[@class='lvtitle']/a");
         return extract(titles, on(WebElement.class).getText());
     }
+
+    public String getErrorMessage() {
+        List<WebElementFacade> results = findAll("//h1/span");
+        return String.valueOf(extract(results, on(WebElement.class).getText()));
+    }
+
+
+
 }

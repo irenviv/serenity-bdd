@@ -1,6 +1,7 @@
-package ui_tests.steps.serenity;
+package ui_tests.steps.search;
 
 import net.thucydides.core.annotations.Step;
+import org.junit.Assert;
 import ui_tests.pages.SearchPage;
 import java.util.List;
 
@@ -13,11 +14,16 @@ import static org.hamcrest.Matchers.hasItem;
  */
 public class SearchSteps {
 
-    SearchPage onSearchPage;
+     SearchPage onSearchPage;
 
     @Step
-    public void isOnTheHomePage() {
+    public void openHomePage() {
         onSearchPage.open();
+    }
+
+    @Step
+    public void verifyOnHomePage(){
+        Assert.assertTrue("User is not on home page, but should",onSearchPage.searchField.isDisplayed());
     }
 
     @Step
@@ -39,5 +45,10 @@ public class SearchSteps {
     public void verifySearchedValues(String value){
         List<String> actualTitles = onSearchPage.getTitlesOfSearchedValues();
         assertThat(actualTitles, hasItem(containsString(value)));
+    }
+
+    @Step
+    public void verifyErrorMessage(String errorMessage){
+        Assert.assertEquals(errorMessage, onSearchPage.getErrorMessage());
     }
 }
