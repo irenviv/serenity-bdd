@@ -25,4 +25,33 @@ dependencies {
     compile('org.assertj:assertj-core:1.7.0')
     compile('com.googlecode.lambdaj:lambdaj:2.3.3')
 }
+
+
+task runFrontendTests(type: Test) {
+    apply plugin: 'application'
+    apply plugin: 'net.serenity-bdd.aggregator'
+
+//    if (System.getProperty("envName") != null) {
+//        systemProperty "envName", System.getProperty("envName")
+//    }
+
+    if (System.getProperty("webdriver.driver") != null) {
+        systemProperty "webdriver.driver", System.getProperty("webdriver.driver")
+    }
+
+    systemProperty "webdriver.chrome.driver", "chromedriver.exe"
+    systemProperty "webdriver.ie.driver", "IEDriverServer.exe"
+    systemProperty "serenity.take.screenshots", "FOR_FAILURES"
+    systemProperty "serenity.logging", "VERBOSE"
+
+
+    if (System.getProperty("testname") != null) {
+        useJUnit {
+            include System.getProperty("testname")
+        }
+    }
+}
+
+
+
 gradle.startParameter.continueOnFailure = true
