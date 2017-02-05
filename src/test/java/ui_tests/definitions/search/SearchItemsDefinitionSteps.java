@@ -1,19 +1,18 @@
 package ui_tests.definitions.search;
 
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
-import ui_tests.definitions.HomePageDefinition;
+import org.jbehave.core.annotations.*;
+import ui_tests.definitions.HomePageDefinitionSteps;
 
 /**
  * Created by Iryna_Minchekova on 1/31/2017.
  */
 
-public class SearchItemsDefinitionSteps extends HomePageDefinition {
+public class SearchItemsDefinitionSteps extends HomePageDefinitionSteps {
 
     // step uses for parametrized tests
     @When("the user looks up the <searchValue>")
-    public void searchForItems(@Named("searchValue")String searchValue){
+    @Alias("the user looks up the '$searchValue'")
+    public void searchForItems(String searchValue){
         user.search.enterValue(searchValue);
     }
 
@@ -30,12 +29,6 @@ public class SearchItemsDefinitionSteps extends HomePageDefinition {
     @Then("the user should see the list of products that include <searchValue> in the product title")
     public void thenSearcheditemsAreDisplayed(String searchValue){
         user.search.verifySearchedValues(searchValue);
-    }
-
-    //step uses fot single search
-    @When("the user search for item '$item'")
-    public void searchForItem(String item){
-        user.search.enterValue(item);
     }
 
     @Then("the user should see error message '$errorMassage")

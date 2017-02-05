@@ -7,7 +7,7 @@ As a user
 I want to buy products
 So that I can navigate to appropriate category via toolbsr
 
-Scenario: Navigate to appropriate category via toolbsr
+Scenario: Navigate to appropriate category via toolbar
 Given the user is on the ebay home page
 When user navigate to <category> category
 Then user is redirected to <category> page
@@ -18,5 +18,3 @@ Examples:
 |Collectibles & Art|
 |Home & Garden     |
 |Sporting Goods    |
-|Motors            |
-|Daily Deals       |

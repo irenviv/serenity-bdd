@@ -7,7 +7,7 @@ import org.jbehave.core.annotations.When;
 /**
  * Created by Iryna_Minchekova on 2/3/2017.
  */
-public class ToolbarNavigationDefinitions extends HomePageDefinition {
+public class ToolbarNavigationDefinitions extends HomePageDefinitionSteps {
 
     @When("user navigate to <category> category")
     public void clickOnCategoryInToolbar(@Named("category")String category){
