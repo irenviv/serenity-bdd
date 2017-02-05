@@ -45,11 +45,11 @@ task runFrontendTests(type: Test) {
     systemProperty "serenity.logging", "VERBOSE"
 
 
-    if (System.getProperty("testname") != null) {
-        useJUnit {
-            include System.getProperty("testname")
-        }
-    }
+//    if (System.getProperty("story") != null) {
+//        useJUnit {
+//            include System.getProperty("story")
+//        }
+//    }
 }
 
 
